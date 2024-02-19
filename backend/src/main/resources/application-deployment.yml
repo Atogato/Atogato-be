@@ -39,8 +39,8 @@ spring:
             redirectUri: "{baseUrl}/{action}/oauth2/code/{registrationId}"
 
           naver:
-            client-id: ${NAVER_CLIENT_ID}
-            client-secret: ${NAVER_CLIENT_SECRET}
+            client-id: NAVER_CLIENT_ID_PLACEHOLDER
+            client-secret: NAVER_CLIENT_SECRET_PLACEHOLDER
             scope:
               - email
               - name
