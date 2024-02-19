@@ -6,7 +6,6 @@ spring:
     username: root
     password: projecta
 
-  # JPA 설정
   jpa:
     generate-ddl: true
     hibernate:
