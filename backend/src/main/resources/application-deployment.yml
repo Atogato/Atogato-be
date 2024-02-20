@@ -41,13 +41,12 @@ spring:
           naver:
             client-id: NAVER_CLIENT_ID_PLACEHOLDER
             client-secret: NAVER_CLIENT_SECRET_PLACEHOLDER
-            clientAuthenticationMethod: post
+            client-authentication-method: POST
             authorization-grant-type: authorization_code
             redirectUri: "{baseUrl}/{action}/oauth2/code/{registrationId}"
             scope:
-              - email
               - nickname
-              - profile_image
+              - email
             client-name: Naver
 
           kakao:
