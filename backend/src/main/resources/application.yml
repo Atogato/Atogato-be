@@ -105,8 +105,6 @@ app:
 cloud:
   aws:
     credentials:
-      accessKey:
-      secretKey: 
 #      accessKey: ${accessKey}
 #      secretKey: ${secretKey}
     region:

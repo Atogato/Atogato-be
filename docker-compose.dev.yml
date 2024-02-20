@@ -27,7 +27,6 @@ services:
       - mynetwork
     restart: on-failure
 
-
   frontend:
     container_name: frontend
     build:
@@ -37,7 +36,6 @@ services:
       - "3000:3000"
     networks:
       - mynetwork
-
 
 networks:
   mynetwork:
