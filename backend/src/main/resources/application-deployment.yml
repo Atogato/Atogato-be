@@ -47,8 +47,8 @@ spring:
               - profile_name
             client-name: Naver
             authorization-grant-type: authorization_code
-#            redirectUri: "{baseUrl}/{action}/oauth2/code/naver"
             redirectUri: "{baseUrl}/{action}/oauth2/code/{registrationId}"
+            #            redirectUri: "{baseUrl}/{action}/oauth2/code/naver"
 
 
           kakao:
