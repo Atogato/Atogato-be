@@ -5,7 +5,7 @@ import portfolio.backend.authentication.oauth.info.OAuth2UserInfo;
 import java.util.Map;
 
 public class NaverOAuth2UserInfo extends OAuth2UserInfo {
-    
+
     public NaverOAuth2UserInfo(Map<String, Object> attributes) {
         super(attributes);
     }
@@ -29,7 +29,7 @@ public class NaverOAuth2UserInfo extends OAuth2UserInfo {
             return null;
         }
 
-        return (String) response.get("nickname");
+        return (String) response.get("email");
     }
 
     @Override
