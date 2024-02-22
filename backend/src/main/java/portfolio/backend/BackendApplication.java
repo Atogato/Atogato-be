@@ -31,7 +31,7 @@ public class BackendApplication {
 			@Override
 			public void addCorsMappings(CorsRegistry registry) {
 				registry.addMapping("/**")
-						.allowedOrigins("http://localhost:3000", "http://atogato.duckdns.org", "https://atogato-fe-tau.vercel.app")
+						.allowedOrigins("http://localhost:3000", "http://atogato.shop", "https://atogato.shop", "https://atogato-fe-tau.vercel.app")
 						.allowedMethods("*")
 						.allowedHeaders("*")
 						.allowCredentials(true)
