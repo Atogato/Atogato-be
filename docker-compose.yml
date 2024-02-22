@@ -19,8 +19,10 @@ services:
     environment:
       - SPRING_PROFILES_ACTIVE=deployment
     image : 9907daniel/project_atogato-backend:latest
+    expose:
+      - 7072
     ports:
-       - "127.0.0.1:7072:7072"
+      - "127.0.0.1:7072:7072"
     depends_on:
       - mysqldb
     networks:
@@ -33,12 +35,22 @@ services:
     restart: always
     ports:
       - 80:80
+      - 443:443
     depends_on:
       - backend
     volumes:
       - ./nginx/conf:/etc/nginx/conf.d
+      - ./data/certbot/conf:/etc/letsencrypt
+      - ./data/certbot/www:/var/www/certbot
     networks:
       - mynetwork
+
+  certbot:
+    image: certbot/certbot
+    restart: unless-stopped
+    volumes:
+      - ./data/certbot/conf:/etc/letsencrypt
+      - ./data/certbot/www:/var/www/certbot
 
 networks:
   mynetwork:
