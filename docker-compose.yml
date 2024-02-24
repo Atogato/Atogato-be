@@ -19,8 +19,10 @@ services:
     environment:
       - SPRING_PROFILES_ACTIVE=deployment
     image : 9907daniel/project_atogato-backend:latest
+    expose:
+      - 7072
     ports:
-       - "127.0.0.1:7072:7072"
+      - "127.0.0.1:7072:7072"
     depends_on:
       - mysqldb
     networks:
@@ -30,15 +32,29 @@ services:
   nginx:
     container_name: nginx
     image: nginx:latest
-    restart: always
+    restart: unless-stopped
     ports:
       - 80:80
+      - 443:443
     depends_on:
       - backend
     volumes:
       - ./nginx/conf:/etc/nginx/conf.d
+      - ./data/certbot/conf:/etc/letsencrypt
+      - ./data/certbot/www:/var/www/certbot
     networks:
       - mynetwork
+    command : "/bin/sh -c 'while :; do sleep 6h & wait $${!}; nginx -s reload; done & nginx -g \"daemon off;\"'"
+
+
+  certbot:
+    image: certbot/certbot
+    restart: unless-stopped
+    volumes:
+      - ./data/certbot/conf:/etc/letsencrypt
+      - ./data/certbot/www:/var/www/certbot
+    entrypoint: "/bin/sh -c 'trap exit TERM; while :; do certbot renew; sleep 12h & wait $${!}; done;'"
+
 
 networks:
   mynetwork:
